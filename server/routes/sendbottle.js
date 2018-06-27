@@ -1,5 +1,6 @@
 const express = require('express');
 const validator = require('validator');
+const users = require('../models/user');
 const sendbottle = require('../models/sendbottle');
 const router = new express.Router();
 
@@ -62,12 +63,26 @@ router.post('/messages', function(req, res) {
   new sendbottle(
     {
       name: req.body.name,
+      title: req.body.title,
       email: req.body.email,
       message : req.body.message
     })
   .save(function(err, message) {
     console.log(message)
   });
+  // Get the count of all users
+  users.count().exec(function (err, count) {
+
+  // Get a random entry
+  var random = Math.floor(Math.random() * count)
+
+  // Again query all users but only fetch one offset by our random #
+  users.findOne().skip(random).exec(
+    function (err, result) {
+      // Tada! random user
+      console.log(result) 
+    })
+})
 });
 
 module.exports = router;
