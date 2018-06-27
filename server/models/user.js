@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const Schema = mongoose.Schema;
 
 // define the User model schema
 const UserSchema = new mongoose.Schema({
@@ -8,7 +9,24 @@ const UserSchema = new mongoose.Schema({
     index: { unique: true }
   },
   password: String,
-  name: String
+  name: String,
+  bottles_left: { type: Number, min: 0, max: 5, default: 5 },
+  bottles_available: { type: Number, default: 0 },
+  messages_authored: [
+    {
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Note model
+      ref: "Message"
+    }
+  ],
+  messages_kept: [
+    {
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Note model
+      ref: "Message"
+    }]
 });
 
 
