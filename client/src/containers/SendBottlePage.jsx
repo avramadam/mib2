@@ -15,6 +15,7 @@ class SendBottlePage extends React.Component {
     this.state = {
       errors: {},
       user: {
+        title: '',
         email: '',
         name: '',
         message: ''
@@ -36,9 +37,10 @@ class SendBottlePage extends React.Component {
 
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
+    const title = encodeURIComponent(this.state.user.title);
     const email = encodeURIComponent(this.state.user.email);
     const message = encodeURIComponent(this.state.user.message);
-    const formData = `name=${name}&email=${email}&message=${message}`;
+    const formData = `name=${name}&email=${email}&message=${message}&title=${title}`;
     console.log(formData);
     // create an AJAX request
     const xhr = new XMLHttpRequest();

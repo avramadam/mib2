@@ -20,8 +20,8 @@ const SendBottleForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Name"
-          name="name"
+          floatingLabelText="Title"
+          name="title"
           errorText={errors.name}
           onChange={onChange}
           value={user.name}
@@ -49,7 +49,7 @@ const SendBottleForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Send New Message" primary />
+        <RaisedButton type="submit" label="Send Bottle" primary />
       </div>
 
     </form>
