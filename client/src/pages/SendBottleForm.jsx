@@ -18,18 +18,18 @@ const SendBottleForm = ({
 
         {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-        <div className="field-line">
+        <div className="textarea">
           <TextField
             floatingLabelText="Title"
             name="title"
-            errorText={errors.name}
+            //errorText={errors.name}
             onChange={onChange}
-            value={user.name}
+            value={user.title}
           />
         </div>
 
 
-        <div className="field-line">
+        <div className="textarea">
           <TextField
             floatingLabelText="Message"
             name="message"
