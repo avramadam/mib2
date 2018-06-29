@@ -3,11 +3,14 @@ import { Button, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
+var store = require('store')
+
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 const Dashboard = ({ secretData, user }) => (
   <div>
     <Card className="container">
+      {store.set('user', user.email)}
       <div>
         <CardTitle
           title="Dashboard"
@@ -40,6 +43,7 @@ const Dashboard = ({ secretData, user }) => (
     />
   </div>
 )
+
 
 
 

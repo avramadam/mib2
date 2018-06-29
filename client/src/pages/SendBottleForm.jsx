@@ -18,7 +18,7 @@ const SendBottleForm = ({
 
         {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-        <div className="field-line">
+        <div className="textarea">
           <TextField
             floatingLabelText="Title"
             name="title"
