@@ -22,14 +22,14 @@ const SendBottleForm = ({
           <TextField
             floatingLabelText="Title"
             name="title"
-            errorText={errors.name}
+            //errorText={errors.name}
             onChange={onChange}
-            value={user.name}
+            value={user.title}
           />
         </div>
 
 
-        <div className="field-line">
+        <div className="textarea">
           <TextField
             floatingLabelText="Message"
             name="message"
