@@ -1,21 +1,25 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Auth from '../modules/Auth';
 
 
 class LogoutFunction extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     // deauthenticate user
     Auth.deauthenticateUser();
+    this.props.toggleAuthenticateStatus();
     // change the current URL to / after logout
-    this.props.history.push('/login');
   }
 
   render() {
     return (
       <div>
         <p>Logging out...</p>
+        <Redirect to={{
+        pathname: '/login'
+      }}/>
       </div>
     )
   }

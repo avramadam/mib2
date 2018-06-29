@@ -14,7 +14,7 @@ const SendBottleForm = ({
 }) => (
     <Card className="container">
       <form action="/" onSubmit={onSubmit}>
-        <h2 className="card-heading">Send Message</h2>
+        <h2 className="card-heading">Send Bottle</h2>
 
         {errors.summary && <p className="error-message">{errors.summary}</p>}
 

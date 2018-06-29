@@ -103,8 +103,19 @@ class Main extends Component {
             <PrivateRoute path="/messages" component={SendBottlePage} />
 
             <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
+<<<<<<< HEAD
             <LoggedOutRoute path="/signup" component={SignUpPage} />
             <Route path="/logout" component={LogoutFunction} />
+=======
+            <LoggedOutRoute path="/signup" component={SignUpPage}/>
+            <Route path="/logout" render={
+              ()=>{
+                return(<LogoutFunction 
+                  toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()}
+                />)
+              }
+              }/>
+>>>>>>> 784acb0601038c3525219bc297b1c2f3993c4e5a
             <Footer />
           </div>
         </Router>
