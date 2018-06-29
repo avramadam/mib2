@@ -9,6 +9,7 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 const Dashboard = ({ secretData, user }) => (
   <div>
+
     <Card className="container">
       {store.set('user', user.email)}
       <div>
