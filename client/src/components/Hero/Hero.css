@@ -1,5 +1,5 @@
 .hero {
-  height: 500px;
+  height: 900px;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -41,6 +41,6 @@
   border: 12px solid white;
   background-color: white;
   opacity: 0.8;
-  width: 700px;
+  width: 900px;
   margin: auto;
 }
