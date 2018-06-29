@@ -2,9 +2,13 @@ const express = require('express');
 const validator = require('validator');
 const users = require('../models/user');
 const sendbottle = require('../models/sendbottle');
-const router = new express.Router();
 
-var db = require("../models");
+const router = new express.Router();
+const store = require('store');
+
+
+
+
 
 /**
  * Validate the sign up form
@@ -62,15 +66,17 @@ router.get('/messages', function (req, res) {
   
 });*/
 router.post('/messages', function (req, res) {
+  console.log(req.body.email);
+
   new sendbottle(
     {
       name: req.body.name,
       title: req.body.title,
-      email: req.user.email,
+      email: req.body.email,
       message: req.body.message
     })
     .save(function (err, message) {
-      console.log(message)
+      // console.log(message)
 
     }).then(function (message) {
       // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array

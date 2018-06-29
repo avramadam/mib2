@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SendBottleForm from '../pages/SendBottleForm.jsx';
+var store = require('store')
+
 
 
 class SendBottlePage extends React.Component {
@@ -38,7 +40,7 @@ class SendBottlePage extends React.Component {
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const title = encodeURIComponent(this.state.user.title);
-    const email = encodeURIComponent(this.state.user.email);
+    const email = encodeURIComponent(store.get('user'));
     const message = encodeURIComponent(this.state.user.message);
     const formData = `name=${name}&email=${email}&message=${message}&title=${title}`;
     console.log(formData);
