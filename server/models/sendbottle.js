@@ -8,6 +8,7 @@ const SendBottleSchema = new mongoose.Schema({
   reported: { type: Boolean, default: false },
   briny_deeps: { type: Boolean, default: false },
   seen_count: { type: Number, default: 0 },
+  kept: { type: Boolean, default: false },
   createDate: {
     type: Date,
     default: Date.now,

@@ -20,6 +20,15 @@ const UserSchema = new mongoose.Schema({
       ref: "Message"
     }
   ],
+  messages_seen: [
+    {
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Note model
+      ref: "Message"
+    }
+  ],
+
   messages_kept: [
     {
       // Store ObjectIds in the array
@@ -27,6 +36,7 @@ const UserSchema = new mongoose.Schema({
       // The ObjectIds will refer to the ids in the Note model
       ref: "Message"
     }]
+
 });
 
 
