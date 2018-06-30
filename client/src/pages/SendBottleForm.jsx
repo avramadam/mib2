@@ -41,7 +41,10 @@ const SendBottleForm = ({
               />
             </div>
 
-            <div className="button-line">
+            <div className="button-line" style={{
+              paddingTop: "5rem",
+              paddingBottom: "3rem"
+            }}>
               <RaisedButton type="submit" label="Send Bottle" primary />
             </div>
 

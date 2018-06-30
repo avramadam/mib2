@@ -15,7 +15,7 @@ const Dashboard = ({ secretData, user }) => (
         border: "none",
         boxShadow: "none",
         marginBottom: "5rem",
-        paddingBottom: "1rem"
+        paddingBottom: "1rem",
       }}>
         <div>
           <CardTitle
