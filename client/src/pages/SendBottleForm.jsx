@@ -27,7 +27,6 @@ const SendBottleForm = ({
                 name="title"
                 errorText={errors.name}
                 onChange={onChange}
-                value={user.name}
               />
             </div>
 
