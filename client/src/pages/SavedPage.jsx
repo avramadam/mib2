@@ -8,18 +8,17 @@ import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
+
 const Saved = ({ secretData, user }) => (
 	<div>
 		<Card className="container">
 			<div>
 				<CardTitle
-					title="Saved Bottles"
+					title="Saved Bottles Go Here"
 				/>
-				{secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardText>}
+
 
 			</div>
-
-
 
 		</Card>
 	</div>
