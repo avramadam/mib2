@@ -28,7 +28,14 @@ const UserSchema = new mongoose.Schema({
       ref: "Message"
     }
   ],
-
+  thrown_back: [
+    {
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Note model
+      ref: "Message"
+    }
+  ],
   messages_kept: [
     {
       // Store ObjectIds in the array
