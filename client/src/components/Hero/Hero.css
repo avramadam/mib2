@@ -36,11 +36,7 @@
   padding-top: 2px;
   margin-top: 0;
 }
-
-.hero div {
-  border: 12px solid white;
-  background-color: white;
-  opacity: 0.8;
-  width: 900px;
-  margin: auto;
+.hero h3{
+  font-size:50 px;
+  color:#b2b2b2;
 }
