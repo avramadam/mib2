@@ -9,24 +9,25 @@ const store = require('store');
 
 const usermail = store.get('user')
 
-router.get("/received", function (req, res) {
+router.get("/:user", function (req, res) {
 	// Find all Users
-	users.find({ email: usermail })
+	console.log(req.params.user)
+	users.findOne({ _id: req.params.user })
 		.then(function (dbUser) {
+			console.log(dbUser);
 			// If all Users are successfully found, send them back to the client
-
+			// console.log(dbUser)
 			let ret = [];
 			for (let i = 0; i < dbUser.messages_seen.length; i++) {
-				if (!dbUser.thrown_back.includes(dbUser.messages_seen[i]) || !dbUser.messages_kept.includes(dbUser.messages_seen[i])) {
+				if (!dbUser.thrown_back.includes(dbUser.messages_seen[i]) && !dbUser.messages_kept.includes(dbUser.messages_seen[i])) {
 					ret.push(dbUser.messages_seen[i]);
 				}
 			}
-
-			return ret;
-		}).then(function (ret) {
-			sendbottle.find({ _id{ $in: ret } })
+			console.log("test" + ret);
+			sendbottle.find({ _id: { $in: ret } })
 				.then(function (messages) {
-					return messages;
+
+					res.json(messages);
 				})
 		})
 		.catch(function (err) {
@@ -34,3 +35,5 @@ router.get("/received", function (req, res) {
 			res.json(err);
 		});
 });
+
+module.exports = router;
