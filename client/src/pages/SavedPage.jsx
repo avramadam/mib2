@@ -11,13 +11,18 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 const Saved = ({ secretData, user }) => (
 	<div>
-		<Card className="container">
+		<Card className="container" >
 			<div>
-				<CardTitle
+				<CardTitle style={{
+					backgroundColor: "rgba(22, 86, 179, .8)",
+					border: "none",
+					boxShadow: "none",
+					paddingBottom: "2rem"
+				}}
 					title="Saved Bottles Go Here"
 				/>
 
-
+				<h3>This is a saved message.</h3>
 			</div>
 
 		</Card>
