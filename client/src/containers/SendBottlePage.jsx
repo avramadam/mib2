@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SendBottleForm from '../pages/SendBottleForm.jsx';
+var store = require('store')
+
 
 
 class SendBottlePage extends React.Component {
@@ -21,6 +23,15 @@ class SendBottlePage extends React.Component {
         message: ''
       }
     };
+    if (store.get('bottle')) {
+      let bottle = store.get('bottle')
+      this.setState({
+        user: {
+          title: bottle.title,
+          message: bottle.message
+        }
+      });
+    }
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
@@ -34,11 +45,14 @@ class SendBottlePage extends React.Component {
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-
+    store.set('bottle', {
+      title: this.state.user.title,
+      message: this.state.user.message
+    });
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const title = encodeURIComponent(this.state.user.title);
-    const email = encodeURIComponent(this.state.user.email);
+    const email = encodeURIComponent(store.get('user'));
     const message = encodeURIComponent(this.state.user.message);
     const formData = `name=${name}&email=${email}&message=${message}&title=${title}`;
     console.log(formData);

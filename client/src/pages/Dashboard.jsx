@@ -3,6 +3,8 @@ import { Button, Row, Col, Container } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
+var store = require('store')
+
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 const Dashboard = ({ secretData, user }) => (
@@ -58,6 +60,7 @@ const Dashboard = ({ secretData, user }) => (
     </Hero>
   </div>
 )
+
 
 
 
