@@ -12,7 +12,9 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 const Saved = ({ secretData, user }) => (
 	<div>
 		<Card className="container" >
-			<div>
+			
+			<Hero backgroundImage="./images/miab.jpeg">
+				
 				<CardTitle style={{
 					backgroundColor: "rgba(22, 86, 179, .8)",
 					border: "none",
@@ -23,8 +25,7 @@ const Saved = ({ secretData, user }) => (
 				/>
 
 				<h3>This is a saved message.</h3>
-			</div>
-
+</Hero>
 		</Card>
 	</div>
 
