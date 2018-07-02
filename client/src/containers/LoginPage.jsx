@@ -47,6 +47,7 @@ class LoginPage extends React.Component {
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
     const formData = `email=${email}&password=${password}`;
+    localStorage.email = email;
 //console.log(formData);
     // create an AJAX request
     const xhr = new XMLHttpRequest();
