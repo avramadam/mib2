@@ -65,13 +65,12 @@ router.get('/messages', function (req, res) {
   
 });*/
 router.post('/messages', function (req, res) {
-  console.log(req.body.email);
+  var email = req.body.email.replace("%40", "@");
 
   new sendbottle(
     {
-      name: req.body.name,
       title: req.body.title,
-      email: req.body.email,
+      email: email,
       message: req.body.message
     })
     .save(function (err, message) {
@@ -81,6 +80,7 @@ router.post('/messages', function (req, res) {
       // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
       // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
       // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+
 
 
 
@@ -108,12 +108,12 @@ router.post('/messages', function (req, res) {
           })
       })
       return users.findOneAndUpdate({ email: req.body.email }, { $push: { messages_authored: message._id } }, { new: true });
+
     })
     .then(function (sender) {
       // If the User was updated successfully, send it back to the client
       res.json(sender);
     });
-  // Get the count of all users
 
 });
 
