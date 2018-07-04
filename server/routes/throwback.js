@@ -6,7 +6,7 @@ const router = require("express").Router();
 const store = require('store');
 
 
-router.post('/messages', function (req, res) {
+router.put('/messages', function (req, res) {
   let message = req.body.message;
   sendbottle.findByIdAndUpdate(message._id, function (err, message) {
     if (message.seen_count <= 3) {
