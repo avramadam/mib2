@@ -28,7 +28,9 @@ const UserSchema = new mongoose.Schema({
       ref: "Message"
     }
   ],
-  messages_received: [
+
+  thrown_back: [
+
     {
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,

@@ -2,11 +2,10 @@ const express = require('express');
 const validator = require('validator');
 const users = require('../models/user');
 const sendbottle = require('../models/sendbottle');
-
 const router = new express.Router();
 const store = require('store');
 
-
+var mess = {};
 
 
 
@@ -75,78 +74,47 @@ router.post('/messages', function (req, res) {
       message: req.body.message
     })
     .save(function (err, message) {
-      //console.log(message)
+
 
     }).then(function (message) {
       // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
       // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
       // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      return users.findOneAndUpdate({ email: email }, { $push: { messages_authored: message._id } }, { new: true });
-    }).then(function(message) {
-      function getRandomUser(callback) {
-        // Get the count of all users
-        users.count().exec(function (err, count) {
-    
-          // Get a random entry
-          var random = Math.floor(Math.random() * count)
-    
-          // Again query all users but only fetch one offset by our random #
-          users.findOne().skip(random).exec(
-            function (err, result) {
-              // Tada! random user
-              //console.log(result);
-              var re = result.email;
-              if (result.email === email) {
-                getRandomUser();
-              } else {
-                console.log(re + " " + email);
-                callback(re);
-              }
-              
-            })
-        })
-       
-      }
-    
-      getRandomUser(function(randUser) {
-        console.log(randUser);
-        return users.findOneAndUpdate({ email: randUser }, { $push: { messages_received: message._id } }, { new: true });
-      });
-      //getRandomUser(email, function() {
-      //console.log(email);
-      //return users.findOneAndUpdate({ email: email }, { $push: { messages_received: message._id } }, { new: true });
-      //});
+
+
+
+
+      users.count({}).exec(function (err, count) {
+
+
+        // Get a random entry
+        var random = Math.floor(Math.random() * count)
+
+        // Again query all users but only fetch one offset by our random #
+        users.findOne().skip(random).exec(
+          function (err, result) {
+            // Tada! random user
+            // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
+            // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+            console.log(random + ' is the number')
+            // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+            return users.findOneAndUpdate({ email: result.email }, { $push: { messages_seen: message._id } }, { new: true });
+          })
+          .then((reciever) => {
+            console.log(reciever);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      })
+      return users.findOneAndUpdate({ email: req.body.email }, { $push: { messages_authored: message._id } }, { new: true });
+
     })
-    .then(function (dbUser) {
+    .then(function (sender) {
       // If the User was updated successfully, send it back to the client
-      res.json(dbUser);
+      res.json(sender);
     });
-  /*function getRandomUser() {
-    // Get the count of all users
-    users.count().exec(function (err, count) {
 
-      // Get a random entry
-      var random = Math.floor(Math.random() * count)
-
-      // Again query all users but only fetch one offset by our random #
-      users.findOne().skip(random).exec(
-        function (err, result) {
-          // Tada! random user
-          //console.log(result);
-          var re = result.email;
-          if (result.email === email) {
-            getRandomUser();
-          } else {
-            return users.findOneAndUpdate({ email: email }, { $push: { messages_received: message._id } }, { new: true });
-          }
-          console.log(re + " " + email);
-        })
-    })
-   
-  }
-  getRandomUser();*/
- // console.log(ret);
-  
 });
 
 module.exports = router;
