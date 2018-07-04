@@ -37,6 +37,8 @@ const SendBottleForm = ({
             <div className="field-line">
               <TextField
                 floatingLabelText="Message"
+                style={{textAlign: 'left'}}
+                multiLine={true}
                 name="message"
                 onChange={onChange}
                 //errorText={errors.message}
