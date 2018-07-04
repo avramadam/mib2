@@ -5,87 +5,95 @@ const sendbottle = require('../models/sendbottle');
 const router = new express.Router();
 const store = require('store');
 
-var mess = {};
+router.get('/messages', (req, res) => {
+  console.log("In the get route");
+  //Comment.find((err, comments) => {
+  //  if (err) return res.json({ success: false, error: err });
+  //  return res.json({ success: true, data: comments });
+  //});
+  var mess = {};
 
 
 
-/**
- * Validate the sign up form
- *
- * @param {object} payload - the HTTP body message
- * @returns {object} The result of validation. Object contains a boolean validation result,
- *                   errors tips, and a global message for the whole form.
- */
-function validateMessageForm(payload) {
-  const errors = {};
-  let isFormValid = true;
-  let message = '';
+  /**
+   * Validate the sign up form
+   *
+   * @param {object} payload - the HTTP body message
+   * @returns {object} The result of validation. Object contains a boolean validation result,
+   *                   errors tips, and a global message for the whole form.
+   */
+  function validateMessageForm(payload) {
+    const errors = {};
+    let isFormValid = true;
+    let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
-    isFormValid = false;
-    errors.email = 'Please provide a correct email address.';
+    if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
+      isFormValid = false;
+      errors.email = 'Please provide a correct email address.';
+    }
+
+    if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
+      isFormValid = false;
+      errors.name = 'Please provide your name.';
+    }
+
+    if (!isFormValid) {
+      message = 'Check the form for errors.';
+    }
+
+    return {
+      success: isFormValid,
+      message,
+      errors
+    };
   }
 
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
-    isFormValid = false;
-    errors.name = 'Please provide your name.';
-  }
-
-  if (!isFormValid) {
-    message = 'Check the form for errors.';
-  }
-
-  return {
-    success: isFormValid,
-    message,
-    errors
-  };
-}
-
-/*router.get('/messages', (req, res) => {
-  Comment.find((err, comments) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true, data: comments });
-  });
-});*/
-router.get('/messages', function (req, res) {
-  res.send('My funky form');
-});
-
-/*router.post('/messages', (req, res) => {
-  const validationResult = validateMessageForm(req.body);
-  console.log(req.body);
-  if (!validationResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: validationResult.message,
-      errors: validationResult.errors
+  /*router.get('/messages', (req, res) => {
+    Comment.find((err, comments) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: comments });
     });
-  }
-  
-});*/
-router.post('/messages', function (req, res) {
-  var email = req.body.email.replace("%40", "@");
+  });*/
+  router.get('/messages', function (req, res) {
+    res.send('My funky form');
+  });
 
-  new sendbottle(
-    {
-      title: req.body.title,
-      email: email,
-      message: req.body.message
-    })
-    .save(function (err, message) {
+  //router.get('/messages', function (req, res) {
+  //  res.send('My funky form');
+  //});
 
+  router.post('/messages', function (req, res) {
+    let email = req.body.email.replace("%40", "@");
 
-    }).then(function (message) {
-      // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
-      // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-
-
+    new sendbottle(
+      {
+        title: req.body.title,
+        email: email,
+        message: req.body.message
+      })
+      .save(function (err, message) {
 
 
-      users.count({}).exec(function (err, count) {
+      }).then(function (message) {
+        // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
+        // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+        // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+        return users.findOneAndUpdate({ email: email }, { $push: { messages_authored: message._id } }, { new: true });
+      }).then(function (message) {
 
+        getRandomUser(function (err, randomUser) {
+          users.findOneAndUpdate({ email: randomUser }, { $push: { messages_received: message._id } }, { new: true }, function (err) {
+            if (err) {
+              console.log(err);
+            }
+
+            res.send();
+          });
+        });
+      });
+    function getRandomUser(callback) {
+      // Get the count of all users
+      users.count().exec(function (err, count) {
 
         // Get a random entry
         var random = Math.floor(Math.random() * count)
@@ -94,27 +102,21 @@ router.post('/messages', function (req, res) {
         users.findOne().skip(random).exec(
           function (err, result) {
             // Tada! random user
-            // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
-            // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-            console.log(random + ' is the number')
-            // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            return users.findOneAndUpdate({ email: result.email }, { $push: { messages_seen: message._id } }, { new: true });
-          })
-          .then((reciever) => {
-            console.log(reciever);
-          })
-          .catch(err => {
-            console.log(err);
+            //console.log(result);
+
+            if (result.email === email) {
+              getRandomUser(callback);
+            } else {
+
+              console.log(result.email + " " + email);
+              //return result.email;
+              callback(null, result.email);
+            }
+
           })
       })
-      return users.findOneAndUpdate({ email: req.body.email }, { $push: { messages_authored: message._id } }, { new: true });
 
-    })
-    .then(function (sender) {
-      // If the User was updated successfully, send it back to the client
-      res.json(sender);
-    });
+    }
+  });
 
-});
-
-module.exports = router;
+  module.exports = router;
