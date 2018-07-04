@@ -16,12 +16,7 @@ class SendBottlePage extends React.Component {
     // set the initial component state
     this.state = {
       errors: {},
-      user: {
-        title: '',
-        //email: '',
-        //name: '',
-        message: ''
-      }
+      user: {}
     };
 
 
@@ -54,6 +49,8 @@ class SendBottlePage extends React.Component {
     const email = encodeURIComponent(localStorage.email);
     const message = encodeURIComponent(this.state.user.message);
     const formData = `name=${name}&email=${email}&message=${message}&title=${title}`;
+    localStorage.title = title;
+    localStorage.message = message;
     // create an AJAX request
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/sendbottle/messages');
@@ -65,7 +62,14 @@ class SendBottlePage extends React.Component {
 
         // change the component-container state
         this.setState({
-          errors: {}
+          errors: {},
+          user: {
+            title: "",
+            message: ""
+          },
+          title: '',
+          email: '',
+          message: ''
         });
 
         // set a message
@@ -101,7 +105,8 @@ class SendBottlePage extends React.Component {
     user[field] = event.target.value;
 
     this.setState({
-      user
+      user: user
+
     });
     store.set('bottle', {
       title: this.state.user.title,
