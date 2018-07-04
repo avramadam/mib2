@@ -30,9 +30,11 @@ app.use('/api', authCheckMiddleware);
 const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
 const messageRoutes = require('./server/routes/sendbottle');
+const receivedRoutes = require('./server/routes/messages_received')
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/sendbottle', messageRoutes);
+app.use('/received', receivedRoutes);
 
 // Set Port, hosting services will look for process.env.PORT
 app.set('port', (process.env.PORT || 3000));
