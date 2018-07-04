@@ -22,6 +22,7 @@ a:hover {
   padding: 10px 15px;
   background-color: #E5E5E5;
 }
+
 .top-bar::after {
   content: '';
   display: block;
