@@ -17,11 +17,11 @@ class SendBottlePage extends React.Component {
     this.state = {
       errors: {},
       user: {}
-        //title: '',
-        //email: '',
-        //name: '',
-        //message: ''
-      
+      //title: '',
+      //email: '',
+      //name: '',
+      //message: ''
+
     };
     if (store.get('bottle')) {
       let bottle = store.get('bottle')
@@ -45,12 +45,8 @@ class SendBottlePage extends React.Component {
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-    store.set('bottle', {
-      title: this.state.user.title,
-      message: this.state.user.message,
-      email: this.state.user.email
-    });
-    
+
+
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const title = encodeURIComponent(this.state.user.title);
@@ -103,6 +99,11 @@ class SendBottlePage extends React.Component {
 
     this.setState({
       user
+    });
+    store.set('bottle', {
+      title: this.state.user.title,
+      message: this.state.user.message,
+      email: this.state.user.email
     });
   }
 
