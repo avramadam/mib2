@@ -12,11 +12,12 @@ const Dashboard = () => (
       <h1>Message in a Bottle</h1>
       <h2>What message might make your day?</h2>
       <div className="test" style={{
-        border: "12px solid white",
-        backgroundColor: "white",
-        opacity: "0.9",
-        width: "900px",
-        margin: "auto"
+        border: "none",
+        backgroundColor: "#ffaf87",
+        opacity: "0.7",
+        width: "600px",
+        margin: "auto",
+        padding: "1rem"
       }}>
         <p>
           Messages in bottles have been used to send distress messages; in scientific studies;

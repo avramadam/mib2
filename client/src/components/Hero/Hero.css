@@ -23,7 +23,7 @@
 }
 
 .hero h1, .hero h2 {
-  color: white;
+  color: #4c5f74;
 }
 
 .hero p {
@@ -38,5 +38,6 @@
 }
 .hero h3{
   font-size:50 px;
-  color:black;
+  color:#4c5f74;
+  opacity: none;
 }
