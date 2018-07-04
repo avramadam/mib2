@@ -16,12 +16,12 @@ class SendBottlePage extends React.Component {
     // set the initial component state
     this.state = {
       errors: {},
-      user: {
-        title: '',
-        email: '',
-        name: '',
-        message: ''
-      }
+      user: {}
+        //title: '',
+        //email: '',
+        //name: '',
+        //message: ''
+      
     };
     if (store.get('bottle')) {
       let bottle = store.get('bottle')
@@ -47,15 +47,16 @@ class SendBottlePage extends React.Component {
     event.preventDefault();
     store.set('bottle', {
       title: this.state.user.title,
-      message: this.state.user.message
+      message: this.state.user.message,
+      email: this.state.user.email
     });
+    
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const title = encodeURIComponent(this.state.user.title);
-    const email = encodeURIComponent(store.get('user'));
+    const email = encodeURIComponent(localStorage.email);
     const message = encodeURIComponent(this.state.user.message);
     const formData = `name=${name}&email=${email}&message=${message}&title=${title}`;
-    console.log(formData);
     // create an AJAX request
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/sendbottle/messages');
@@ -86,6 +87,7 @@ class SendBottlePage extends React.Component {
         });
       }
     });
+    console.log(formData);
     xhr.send(formData);
   }
 
@@ -114,6 +116,7 @@ class SendBottlePage extends React.Component {
         onChange={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
+        email={this.state.email}
       />
     );
   }

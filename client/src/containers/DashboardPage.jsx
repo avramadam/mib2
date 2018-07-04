@@ -31,7 +31,8 @@ class DashboardPage extends React.Component {
       if (xhr.status === 200) {
         this.setState({
           secretData: xhr.response.message,
-          user: xhr.response.user
+          user: xhr.response.user,
+          email: xhr.response.email
         });
       }
     });
@@ -42,7 +43,7 @@ class DashboardPage extends React.Component {
    * Render the component.
    */
   render() {
-    return (<Dashboard secretData={this.state.secretData} user={this.state.user} />);
+    return (<Dashboard secretData={this.state.secretData} user={this.state.user} email={this.state.email}/>);
   }
 
 }
