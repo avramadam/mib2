@@ -52,7 +52,6 @@ class SendBottlePage extends React.Component {
     });
     
     // create a string for an HTTP body message
-    const name = encodeURIComponent(this.state.user.name);
     const title = encodeURIComponent(this.state.user.title);
     const email = encodeURIComponent(localStorage.email);
     const message = encodeURIComponent(this.state.user.message);
