@@ -67,7 +67,14 @@ class SendBottlePage extends React.Component {
 
         // change the component-container state
         this.setState({
-          errors: {}
+          errors: {},
+          user: {
+            title:"",
+            message: ""
+          },
+          title: '',
+          email: '',
+          message: ''
         });
 
         // set a message
@@ -101,7 +108,8 @@ class SendBottlePage extends React.Component {
     user[field] = event.target.value;
 
     this.setState({
-      user
+      user: user
+ 
     });
   }
 

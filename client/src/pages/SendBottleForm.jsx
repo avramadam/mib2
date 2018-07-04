@@ -12,12 +12,14 @@ const SendBottleForm = ({
   onChange,
   errors,
   user,
-}) => (
+}) => {
+  console.log(user);
+  return(
     <div>
       <Hero backgroundImage="./images/miab.jpeg">
         <Card className="container">
           <form action="/" onSubmit={onSubmit}>
-            <h3 className="card-heading">Send Bottle</h3>
+            <h3 className="card-heading">Send</h3>
 
             {errors.summary && <p className="error-message">{errors.summary}</p>}
 
@@ -27,6 +29,7 @@ const SendBottleForm = ({
                 name="title"
                 errorText={errors.name}
                 onChange={onChange}
+                value={user.title}
               />
             </div>
 
@@ -53,14 +56,15 @@ const SendBottleForm = ({
       </Hero>
     </div>
 
-  );
+  )}
+  ;
 
 SendBottleForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  //onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  //user: PropTypes.object.isRequired,
-  //email: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  email: PropTypes.object.isRequired
 };
 
 SendBottleForm.defaultProps = {
