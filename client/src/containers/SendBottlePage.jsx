@@ -17,11 +17,6 @@ class SendBottlePage extends React.Component {
     this.state = {
       errors: {},
       user: {}
-        //title: '',
-        //email: '',
-        //name: '',
-        //message: ''
-      
     };
     if (store.get('bottle')) {
       let bottle = store.get('bottle')
@@ -45,17 +40,14 @@ class SendBottlePage extends React.Component {
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-    store.set('bottle', {
-      title: this.state.user.title,
-      message: this.state.user.message,
-      email: this.state.user.email
-    });
     
     // create a string for an HTTP body message
     const title = encodeURIComponent(this.state.user.title);
     const email = encodeURIComponent(localStorage.email);
     const message = encodeURIComponent(this.state.user.message);
     const formData = `name=${name}&email=${email}&message=${message}&title=${title}`;
+    localStorage.title = title;
+    localStorage.message = message;
     // create an AJAX request
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/sendbottle/messages');
