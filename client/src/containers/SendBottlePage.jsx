@@ -16,13 +16,19 @@ class SendBottlePage extends React.Component {
     // set the initial component state
     this.state = {
       errors: {},
-      user: {}
-      //title: '',
-      //email: '',
-      //name: '',
-      //message: ''
-
+      user: {
+        title: '',
+        //email: '',
+        //name: '',
+        message: ''
+      }
     };
+
+
+    this.processForm = this.processForm.bind(this);
+    this.changeUser = this.changeUser.bind(this);
+  }
+  componentDidMount() {
     if (store.get('bottle')) {
       let bottle = store.get('bottle')
       this.setState({
@@ -32,11 +38,7 @@ class SendBottlePage extends React.Component {
         }
       });
     }
-
-    this.processForm = this.processForm.bind(this);
-    this.changeUser = this.changeUser.bind(this);
   }
-
   /**
    * Process the form.
    *
@@ -45,7 +47,7 @@ class SendBottlePage extends React.Component {
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-
+    store.remove('bottle');
 
     // create a string for an HTTP body message
     const title = encodeURIComponent(this.state.user.title);
@@ -81,7 +83,9 @@ class SendBottlePage extends React.Component {
           errors
         });
       }
+
     });
+
     console.log(formData);
     xhr.send(formData);
   }
@@ -102,7 +106,7 @@ class SendBottlePage extends React.Component {
     store.set('bottle', {
       title: this.state.user.title,
       message: this.state.user.message,
-      email: this.state.user.email
+
     });
   }
 
