@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 
-const Saved = ({ secretData, user }) => (
+const New = ({ secretData, user }) => (
 	<div>
 		<Hero backgroundImage="./images/miab.jpeg">
 
@@ -22,12 +22,12 @@ const Saved = ({ secretData, user }) => (
 					boxShadow: "none",
 					paddingBottom: "2rem"
 				}}
-					title="Saved Bottles Go Here"
+					title="These are your new Bottles"
 				/>
 
-				<h3>This is a saved message.</h3>
+				<h3>unordered list of generated bottles? -avram</h3>
 				<h3>This is another.</h3>
-				<h3>There could be a whole bunch if you have been saving them for a while.</h3>
+				<h3>There could be a whole bunch if you haven't checked them for a while.</h3>
 			</Card>
 		</Hero>
 
@@ -37,4 +37,4 @@ const Saved = ({ secretData, user }) => (
 
 )
 
-export default Saved;
+export default New;

@@ -21,6 +21,8 @@ import SendBottlePage from './containers/SendBottlePage.jsx';
 import Footer from "./components/Footer";
 import Auth from './modules/Auth';
 import SavedMessages from './containers/SavedMessages.jsx';
+import NewBottle from './containers/NewBottle.jsx';
+
 
 
 // remove tap delay, essential for MaterialUI to work properly
@@ -103,6 +105,8 @@ class Main extends Component {
             <PrivateRoute path="/dashboard" component={DashboardPage} />
             <PrivateRoute path="/messages" component={SendBottlePage} />
             <PrivateRoute path="/savedmessages" component={SavedMessages} />
+            <PrivateRoute path="/newbottles" component={NewBottle} />
+
 
             <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <LoggedOutRoute path="/signup" component={SignUpPage} />
