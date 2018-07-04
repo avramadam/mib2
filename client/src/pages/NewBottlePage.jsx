@@ -29,6 +29,12 @@ const New = ({ secretData, user }) => (
 				<h3>This is another.</h3>
 				<h3>There could be a whole bunch if you haven't checked them for a while.</h3>
 			</Card>
+			<Link to="/NewBottles">
+				<Button style={{ backgroundColor: "#44014C", width: "200px", minHeight: "100px" }}>save this message</Button>
+			</Link>
+			<Link to="/NewBottles">
+				<Button style={{ backgroundColor: "	#FFA500", width: "200px", minHeight: "100px" }} > toss it back</Button>
+			</Link>
 		</Hero>
 
 	</div>
