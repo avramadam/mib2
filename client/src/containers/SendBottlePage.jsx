@@ -52,7 +52,6 @@ class SendBottlePage extends React.Component {
     });
     
     // create a string for an HTTP body message
-    const name = encodeURIComponent(this.state.user.name);
     const title = encodeURIComponent(this.state.user.title);
     const email = encodeURIComponent(localStorage.email);
     const message = encodeURIComponent(this.state.user.message);
@@ -68,7 +67,14 @@ class SendBottlePage extends React.Component {
 
         // change the component-container state
         this.setState({
-          errors: {}
+          errors: {},
+          user: {
+            title:"",
+            message: ""
+          },
+          title: '',
+          email: '',
+          message: ''
         });
 
         // set a message
@@ -102,7 +108,8 @@ class SendBottlePage extends React.Component {
     user[field] = event.target.value;
 
     this.setState({
-      user
+      user: user
+ 
     });
   }
 
