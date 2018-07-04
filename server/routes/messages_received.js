@@ -9,7 +9,7 @@ const store = require('store');
 
 const usermail = store.get('user')
 
-router.get("/:user", function (req, res) {
+router.get("/", function (req, res) {
 	// Find all Users
 	console.log(req.params.user)
 	users.findOne({ _id: req.params.user })
