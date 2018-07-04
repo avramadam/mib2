@@ -102,5 +102,7 @@ a:hover {
   margin-top: 0;
 }
 
-
+.field-line div div hr{
+  bottom:0 !important;
+}
 
