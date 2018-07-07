@@ -16,8 +16,9 @@ const SignUpForm = ({
     <div>
       <Hero backgroundImage="./images/miab.jpeg">
         <Card className="container" style={{
-          backgroundColor: "white",
+          backgroundColor: "#ffaf87",
           opacity: "0.7",
+          width: "500px"
         }}>
           <form action="/" onSubmit={onSubmit}>
             <h3 className="card-heading">Sign Up</h3>

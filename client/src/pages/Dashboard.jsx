@@ -55,6 +55,21 @@ const Dashboard = ({ secretData, user }) => (
               </Link>
             </Card>
           </Col>
+          <Col sm="6">
+            <Card style={{
+              backgroundColor: "rgba(255, 255, 255, .8)",
+              border: "30px",
+              boxShadow: "none",
+              paddingBottom: "2rem"
+            }}>
+              <CardTitle>View New Bottles</CardTitle>
+              <CardText>View new bottles</CardText>
+              <Link to="/NewBottles">
+                <Button>View New Bottles</Button>
+                {/* //test */}
+              </Link>
+            </Card>
+          </Col>
         </Row>
       </Container>
     </Hero>
