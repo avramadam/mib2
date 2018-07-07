@@ -66,20 +66,12 @@ router.post('/messages', function (req, res) {
                 //return result.email;
                 callback(null, result.email);
               }
-<<<<<<< HEAD
 
             })
         })
 
       }
     });
-=======
-
-          })
-      })
-
-    }
->>>>>>> 39fa71cdcf9783e15244e9baf38ddabec47deb47
 });
 
 module.exports = router;

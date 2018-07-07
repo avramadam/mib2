@@ -11,7 +11,7 @@ a {
 }
 
 a:hover {
-  color: #6ca8b0;
+  color: blue !important;
 }
 
 .text-center {
@@ -57,8 +57,17 @@ a:hover {
 
 .field-line, .button-line {
   padding: 16px;
-  color:#4c5f74;
+  color:black;
   opacity: none;
+}
+.field-line div div hr{
+  bottom:0 !important;
+ }
+ .field-line div label{
+   color: #4c5f74 !important;
+ }
+ .field-line div label div hr{
+  color: #4c5f74 !important;
 }
 
 .error-message {
