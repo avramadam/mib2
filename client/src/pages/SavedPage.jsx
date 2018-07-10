@@ -59,7 +59,7 @@ class Saved extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<div >
 				<Hero backgroundImage="./images/miab.jpeg">
 
 					<Card className="container" >
