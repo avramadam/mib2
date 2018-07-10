@@ -52,24 +52,37 @@ class Saved extends React.Component {
 							}
 						}
 					>{note.title}</CardTitle>
-					<CardText>{note.message}</CardText>
+					<CardText style={
+						{
+
+
+						}
+					}>{note.message}</CardText>
 				</Card>
 			)
 		})
 	}
 	render() {
 		return (
-			<div >
-				<Hero backgroundImage="./images/miab.jpeg">
+			<div style={{
+				// backgroundImage="./images/miab.jpeg"
+			}}>
+				<Hero backgroundImage="./images/miab.jpeg" height="100%">
 
-					<Card className="container" >
+					<Card className="container" style={{
+						// fontFamily: 'Markazi Text'
+
+					}} >
 
 
 						<CardTitle style={{
 							backgroundColor: "rgba(22, 86, 179, .8)",
 							border: "none",
 							boxShadow: "none",
-							paddingBottom: "2rem"
+							paddingBottom: "2rem",
+							fontFamily: 'Markazi Text',
+							fontSize: 50
+
 						}}
 							title="Saved Bottles Go Here"
 						/>
