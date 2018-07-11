@@ -4,6 +4,10 @@ import SendBottleForm from '../pages/SendBottleForm.jsx';
 var store = require('store')
 
 
+//trying to add a modal component
+// import Modal from 'material-ui/core/Modal';
+
+
 
 class SendBottlePage extends React.Component {
 
@@ -16,7 +20,8 @@ class SendBottlePage extends React.Component {
     // set the initial component state
     this.state = {
       errors: {},
-      user: {}
+      user: {},
+      open: false
     };
 
 
@@ -77,6 +82,27 @@ class SendBottlePage extends React.Component {
 
         // redirect user after sign up to login page
         //this.props.history.push('/login');
+
+
+        //this is part of my modal component
+        //it isn't happy with them
+
+        let handleOpen = () => {
+          this.setState({ open: true });
+        };
+
+        let handleClose = () => {
+          this.setState({ open: false });
+        };
+
+
+
+
+
+
+
+
+
       } else {
         // failure
 
@@ -114,6 +140,12 @@ class SendBottlePage extends React.Component {
 
     });
   }
+
+
+
+
+
+
 
   /**
    * Render the component.

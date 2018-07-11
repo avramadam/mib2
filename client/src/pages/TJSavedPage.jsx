@@ -9,8 +9,6 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 const data = [
-
-
 	{
 		_id: "1",
 		title: "stuff1",
@@ -26,7 +24,6 @@ const data = [
 		title: "stuff3",
 		message: "Vivamus in lacinia dui, sed sollicitudin lectus. Maecenas nec ligula quis ex ullamcorper volutpat. Nunc id felis sit amet ex hendrerit congue sed ac erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus rutrum lacus vel urna rhoncus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam dignissim hendrerit augue sit amet ornare. Proin sit amet neque bibendum, euismod dui dignissim, scelerisque risus. Morbi mauris orci, luctus nec lacus id, molestie fringilla justo. Aenean dolor arcu, bibendum vitae justo ac, convallis blandit enim. Fusce id urna tempus, tristique diam nec, congue nisl. Morbi pretium nulla dui, et bibendum tortor varius in. Ut vehicula aliquet porta. Phasellus fringilla nisi vel leo aliquet, ac vulputate nibh dapibus. Curabitur ultrices neque id felis auctor, consequat feugiat augue suscipit. Nam purus nisi, porta ut placerat quis, lobortis ac augue."
 	}
-
 ]
 
 class Saved extends React.Component {
@@ -52,37 +49,24 @@ class Saved extends React.Component {
 							}
 						}
 					>{note.title}</CardTitle>
-					<CardText style={
-						{
-
-
-						}
-					}>{note.message}</CardText>
+					<CardText>{note.message}</CardText>
 				</Card>
 			)
 		})
 	}
 	render() {
 		return (
-			<div style={{
-				// backgroundImage="./images/miab.jpeg"
-			}}>
-				<Hero backgroundImage="./images/miab.jpeg" height="100%">
+			<div>
+				<Hero backgroundImage="./images/miab.jpeg">
 
-					<Card className="container" style={{
-						// fontFamily: 'Markazi Text'
-
-					}} >
+					<Card className="container" >
 
 
 						<CardTitle style={{
 							backgroundColor: "rgba(22, 86, 179, .8)",
 							border: "none",
 							boxShadow: "none",
-							paddingBottom: "2rem",
-							fontFamily: 'Markazi Text',
-							fontSize: 50
-
+							paddingBottom: "2rem"
 						}}
 							title="Saved Bottles Go Here"
 						/>
