@@ -50,7 +50,7 @@ router.post('/', function (req, res) {
                 // Tada! random user
                 console.log("1st" + result);
 
-                if (result.email === email || result.messages_received.includes(message._id)) {
+                if (result.email === email || result.messages_received.includes(message._id) || result.messages_authored.includes(message._id)) {
                   getRandomUser(callback);
                 } else {
 
