@@ -9,7 +9,7 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 const Dashboard = ({ secretData, user }) => (
   <div>
-    <Hero backgroundImage="./images/miab.jpeg">
+    <Hero backgroundImage="./images/miab.jpeg" >
       <Card className="container" style={{
         backgroundColor: "rgba(255, 255, 255, .8)",
         border: "none",

@@ -13,6 +13,7 @@ const app = express();
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 // tell the app to parse HTTP body messages
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // pass the passport middleware
 app.use(passport.initialize());
@@ -32,12 +33,14 @@ const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
 const messageRoutes = require('./server/routes/sendbottle');
 const receivedRoutes = require('./server/routes/messages_received');
-const throwbackroute = require('./server/routes/throwback.js')
+const throwbackroute = require('./server/routes/throwback.js');
+const keepmessage = require('./server/routes/keep_it.js');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/sendbottle', messageRoutes);
 app.use('/received', receivedRoutes);
 app.use('/throwback', throwbackroute);
+app.use('/keep_it', keepmessage);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/server/static/index.html'));

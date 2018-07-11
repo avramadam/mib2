@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
+import { withStyles } from 'material-ui/styles';
 
 
 const data = [
@@ -33,6 +34,8 @@ const data = [
 
 class New extends React.Component {
 
+
+
 	displayMessages(data) {
 		return data.map((note) => {
 			return (
@@ -55,10 +58,16 @@ class New extends React.Component {
 						}
 					>{note.title}</CardTitle>
 					<CardText>{note.message}</CardText>
+					<div >
+						<Button style={{ backgroundColor: "#4578C2" }}>Save</Button>
+						<Button raised color="accent" >Toss Back</Button>
+					</div>
 				</Card>
 			)
 		})
 	}
+
+
 	render() {
 		return (
 			<div>
@@ -84,3 +93,4 @@ class New extends React.Component {
 	}
 }
 export default New;
+
