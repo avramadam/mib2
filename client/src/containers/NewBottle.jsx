@@ -15,31 +15,18 @@ class NewBottles extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
-		this.getMessages = this.getMessages.bind(this);
+		//this.getMessages = this.getMessages.bind(this);
 		//test2
 		// set the initial component state
 		this.state = {
-			errors: {},
-			user: {}
+			errors: {}
 		}
 	}
 
-	componentDidMount() {
-		this.getMessages();
-	}
-	
-	// Method for getting (all messages) from the db
-	getMessages() {
-		API.getMessages()
-		  .then((res) => {
-			this.setState({ user: res.data.messages_received });
-			});
-	}
 
 	render() {
 		return (
-			<New data={this.state.user}/>
-
+			<New />
 		);
 	}
 }

@@ -5,11 +5,11 @@ const usermail = store.get('email')
 module.exports = {
   // this method handles finding all messages in the db
   find: function(req, res) {
-    //console.log(req.params.email);
-  req.body.email="aadam@comcast.net";
+  //console.log(req.params.email);
+  //req.body.email="aadam@comcast.net";
   //console.log(email);
     console.log("Gathering saved messages from the db");
-    users.findOne({email: req.body.email})
+    users.findOne({email: req.params.email})
     .populate('messages_received').exec(function(error, user) {
       if(error){
         console.log(error)

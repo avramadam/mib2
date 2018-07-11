@@ -18,7 +18,7 @@ const messageController = require("../controllers/message-controller");
 //  res.send('My funky form');
 //});
 // Get saved messages
-router.get("/getmessages", messageController.find);
+router.get("/getmessages/:email", messageController.find);
 // delete saved messages
 router.delete("/getmessages/:id", messageController.delete);
 

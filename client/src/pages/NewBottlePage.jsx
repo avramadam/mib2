@@ -43,7 +43,7 @@ state = {user:[]}
 	
 	// Method for getting (all messages) from the db
 	getMessages = () => {
-		API.getMessages()
+		API.getMessages(localStorage.email)
 		  .then((res) => {
 			this.setState({ user: res.data.messages_received });
 			});
