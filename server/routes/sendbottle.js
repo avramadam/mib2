@@ -4,18 +4,23 @@ const users = require('../models/user');
 const sendbottle = require('../models/sendbottle');
 const router = new express.Router();
 const store = require('store');
+const messageController = require("../controllers/message-controller");
 
-router.get('/messages', (req, res) => {
+/*router.get('/messages', (req, res) => {
   console.log("In the get route");
   //Comment.find((err, comments) => {
   //  if (err) return res.json({ success: false, error: err });
   //  return res.json({ success: true, data: comments });
   //});
-});
+});*/
 
 //router.get('/messages', function (req, res) {
 //  res.send('My funky form');
 //});
+// Get saved messages
+router.get("/getmessages", messageController.find);
+// delete saved messages
+router.delete("/getmessages/:id", messageController.delete);
 
 router.post('/messages', function (req, res) {
   let email = req.body.email.replace("%40", "@");
