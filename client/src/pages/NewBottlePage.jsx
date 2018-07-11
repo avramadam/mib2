@@ -10,7 +10,7 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 import { withStyles } from 'material-ui/styles';
 
 
-const data = [
+/*const data = [
 
 
 	{
@@ -29,7 +29,7 @@ const data = [
 		message: "Vivamus in lacinia dui, sed sollicitudin lectus. "
 	}
 
-]
+]*/
 
 
 class New extends React.Component {
