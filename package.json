@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "css-loader": "^0.28.11",
