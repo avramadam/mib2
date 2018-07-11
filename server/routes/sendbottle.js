@@ -38,8 +38,8 @@ router.post('/messages', function (req, res) {
       // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
       // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
       // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      return users.findOneAndUpdate({ email: email }, { $push: { messages_authored: message._id } }, { new: true });
-    }).then(function (message) {
+      
+    
 
       getRandomUser(function (err, randomUser) {
         users.findOneAndUpdate({ email: randomUser }, { $push: { messages_received: message._id } }, { new: true }, function (err) {
@@ -75,7 +75,7 @@ router.post('/messages', function (req, res) {
             })
         })
 
-      }
+      }return users.findOneAndUpdate({ email: email }, { $push: { messages_authored: message._id } }, { new: true });
     });
 });
 
