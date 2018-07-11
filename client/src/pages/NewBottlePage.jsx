@@ -8,6 +8,7 @@ import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import { withStyles } from 'material-ui/styles';
+import API from "../utils/api";
 
 
 /*const data = [
@@ -34,7 +35,19 @@ import { withStyles } from 'material-ui/styles';
 
 class New extends React.Component {
 
+state = {user:[]}
 
+	componentDidMount() {
+		this.getMessages();
+	}
+	
+	// Method for getting (all messages) from the db
+	getMessages = () => {
+		API.getMessages()
+		  .then((res) => {
+			this.setState({ user: res.data.messages_received });
+			});
+	}
 
 	displayMessages(data) {
 		return data.map((note) => {
@@ -87,7 +100,7 @@ class New extends React.Component {
 							title="These are your new bottles."
 						/>
 					</Card>
-					{this.displayMessages(data)}
+					{this.displayMessages(this.state.user)}
 				</Hero>
 
 			</div>
