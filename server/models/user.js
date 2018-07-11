@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
       // The ObjectIds will refer to the ids in the Note model
-      ref: "Message"
+      ref: "Sendbottle"
     }
   ],
   messages_received: [
@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
       // The ObjectIds will refer to the ids in the Note model
-      ref: "Message"
+      ref: "Sendbottle"
     }
   ],
 
@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema({
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
       // The ObjectIds will refer to the ids in the Note model
-      ref: "Message"
+      ref: "Sendbottle"
     }]
 
 });
