@@ -52,7 +52,11 @@ a:hover {
 }
 
 .card-heading {
-  padding: 16px;
+  padding: 24px;
+}
+
+.CardTitle{
+  font-size: 30 px;
 }
 
 .field-line, .button-line {

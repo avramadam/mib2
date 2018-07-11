@@ -11,16 +11,15 @@ const Dashboard = ({ secretData, user }) => (
   <div>
     <Hero backgroundImage="./images/miab.jpeg">
       <Card className="container" style={{
-        backgroundColor: "rgba(255, 255, 255, .8)",
+        backgroundColor: "#ffaf87",
+        opacity: ".7",
         border: "none",
         boxShadow: "none",
         marginBottom: "5rem",
         paddingBottom: "1rem",
       }}>
         <div>
-          <CardTitle
-            title="Dashboard"
-          />
+          <CardTitle><b>Dashboard</b></CardTitle>
           {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardText>}
 
         </div>
@@ -29,12 +28,14 @@ const Dashboard = ({ secretData, user }) => (
         <Row>
           <Col sm="6">
             <Card style={{
-              backgroundColor: "rgba(255, 255, 255, .8)",
+              color: "black",
+              backgroundColor: "#ffaf87",
+              opacity: ".7",
               border: "none",
               boxShadow: "none",
               paddingBottom: "2rem"
             }}>
-              <CardTitle>Send a Bottle</CardTitle>
+              <CardTitle><b>Send a Bottle</b></CardTitle>
               <CardText>Cast your own bottle into the wild blue.</CardText>
               <Link to="/Messages">
                 <Button>Send Bottle</Button>
@@ -43,12 +44,13 @@ const Dashboard = ({ secretData, user }) => (
           </Col>
           <Col sm="6">
             <Card style={{
-              backgroundColor: "rgba(255, 255, 255, .8)",
+              backgroundColor: "#ffaf87",
+              opacity: ".7",
               border: "none",
               boxShadow: "none",
               paddingBottom: "2rem"
             }}>
-              <CardTitle>View Saved Bottles</CardTitle>
+              <CardTitle><b>View Saved Bottles</b></CardTitle>
               <CardText>View all the bottles you've scoured from the sand.</CardText>
               <Link to="/SavedMessages">
                 <Button>View Saved</Button>
@@ -57,12 +59,13 @@ const Dashboard = ({ secretData, user }) => (
           </Col>
           <Col sm="6">
             <Card style={{
-              backgroundColor: "rgba(255, 255, 255, .8)",
+              backgroundColor: "#ffaf87",
+              opacity: ".7",
               border: "30px",
               boxShadow: "none",
               paddingBottom: "2rem"
             }}>
-              <CardTitle>View New Bottles</CardTitle>
+              <CardTitle><b>View New Bottles</b></CardTitle>
               <CardText>View new bottles</CardText>
               <Link to="/NewBottles">
                 <Button>View New Bottles</Button>
