@@ -3,6 +3,19 @@ body {
   font-size: 16px;
 }
 
+div.container div.row div.col-sm-6 div div div b{
+  font-size: 30px;
+}
+
+div.container div.row div.col-sm-6 div div div{
+  margin-top: 1em;
+  padding-bottom: 5px;
+
+}
+div.container div.row div.col-sm-6{
+position: center;
+}
+
 a {
   color: #00bcd4;
   font-weight: bold;

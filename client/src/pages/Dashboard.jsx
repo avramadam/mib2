@@ -3,6 +3,7 @@ import { Button, Row, Col, Container } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 var store = require('store')
 
 import { Card, CardTitle, CardText } from 'material-ui/Card';
@@ -28,24 +29,8 @@ const Dashboard = ({ secretData, user }) => (
         <Row>
           <Col sm="6">
             <Card style={{
-              color: "black",
               backgroundColor: "#ffaf87",
-              opacity: ".7",
-              border: "none",
-              boxShadow: "none",
-              paddingBottom: "2rem"
-            }}>
-              <CardTitle><b>Send a Bottle</b></CardTitle>
-              <CardText>Cast your own bottle into the wild blue.</CardText>
-              <Link to="/Messages">
-                <Button>Send Bottle</Button>
-              </Link>
-            </Card>
-          </Col>
-          <Col sm="6">
-            <Card style={{
-              backgroundColor: "#ffaf87",
-              opacity: ".7",
+              opacity: ".8",
               border: "none",
               boxShadow: "none",
               paddingBottom: "2rem"
@@ -53,23 +38,64 @@ const Dashboard = ({ secretData, user }) => (
               <CardTitle><b>View Saved Bottles</b></CardTitle>
               <CardText>View all the bottles you've scoured from the sand.</CardText>
               <Link to="/SavedMessages">
-                <Button>View Saved</Button>
+                <Button
+                  variant="contained"
+                  color="#4c5f74"
+                  disableRipple
+                  opacity="none"
+                >
+                  View Saved
+                  </Button>
               </Link>
             </Card>
           </Col>
           <Col sm="6">
             <Card style={{
               backgroundColor: "#ffaf87",
-              opacity: ".7",
+              opacity: ".9",
               border: "30px",
               boxShadow: "none",
               paddingBottom: "2rem"
             }}>
               <CardTitle><b>View New Bottles</b></CardTitle>
-              <CardText>View new bottles</CardText>
+              <CardText>
+                View new bottles
+              </CardText>
               <Link to="/NewBottles">
-                <Button>View New Bottles</Button>
+                <Button
+                  variant="contained"
+                  color="Dark Grey"
+                  disableRipple
+                  opacity="0.8"
+                >
+                  View New Bottles
+                </Button>
                 {/* //test */}
+              </Link>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm="6">
+            <Card style={{
+              color: "black",
+              backgroundColor: "#ffaf87",
+              opacity: ".8",
+              border: "none",
+              boxShadow: "none",
+              paddingBottom: "2rem"
+            }}>
+              <CardTitle><b>Send a Bottle</b></CardTitle>
+              <CardText>Cast your own bottle into the wild blue.</CardText>
+              <Link to="/Messages">
+                <Button
+                  variant="contained"
+                  color="Dark Grey"
+                  disableRipple
+                  opacity="0.9"
+                >
+                  Send Bottle
+      </Button>
               </Link>
             </Card>
           </Col>
