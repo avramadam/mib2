@@ -61,6 +61,8 @@ class New extends React.Component {
 					<div >
 						<Button style={{ backgroundColor: "#4578C2" }}>Save</Button>
 						<Button raised color="accent" >Toss Back</Button>
+						<Button raised color="red" >Report</Button>
+
 					</div>
 				</Card>
 			)
