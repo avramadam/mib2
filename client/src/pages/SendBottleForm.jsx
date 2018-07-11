@@ -31,7 +31,7 @@ const SendBottleForm = ({
   console.log(user);
   return (
     <div>
-      <Hero backgroundImage="./images/miab.jpeg">
+      <Hero >
         <Card className="container" style={{ width: 500 }}>
           <form action="/" onSubmit={onSubmit}>
             <h3 className="card-heading">Send</h3>
