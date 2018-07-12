@@ -38,16 +38,19 @@ class Saved extends React.Component {
 					key={note._id}
 					className="container"
 					style={{
-						backgroundColor: "rgba(255, 255, 255, .8)",
+						backgroundColor: "#ffaf87",
+						opacity: ".8",
 						border: "none",
 						boxShadow: "none",
-						paddingBottom: "2rem"
+						paddingBottom: "1em",
+						marginBottom: "2rem"
 					}}>
 					<CardTitle
 						style={
 							{
 								fontWeight: "bold",
-								backgroundColor: "rgba(0, 0, 0, .8)",
+								backgroundColor: "#54838a",
+								opacity: ".9",
 								color: "#ffffff"
 							}
 						}
@@ -66,25 +69,9 @@ class Saved extends React.Component {
 		return (
 			<div>
 				<Hero>
-
-					<Card className="container" style={{
-						fontFamily: "'Markazi Text', serif"
-
-					}} >
+					<h4>Welcome To Your Collection</h4>
 
 
-						<CardTitle style={{
-							backgroundColor: "rgba(22, 86, 179, .8)",
-							border: "none",
-							boxShadow: "none",
-							paddingBottom: "2rem",
-							fontFamily: 'Markazi Text',
-							fontSize: 50
-
-						}}
-							title="Saved Bottles Go Here"
-						/>
-					</Card>
 					{this.displayMessages(data)}
 				</Hero>
 
