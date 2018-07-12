@@ -35,22 +35,42 @@ import API from "../utils/api";
 
 class New extends React.Component {
 
-state = {user:[]}
+	state = { user: [] }
 
 	componentDidMount() {
 		this.getMessages();
 	}
-	
+
 	// Method for getting (all messages) from the db
 	getMessages = () => {
 		API.getMessages(localStorage.email)
-		  .then((res) => {
-			this.setState({ user: res.data.messages_received });
+			.then((res) => {
+				this.setState({ user: res.data.messages_received });
 			});
 	}
 
+	throwBack = (note) => {
+
+
+		API.throwBack(note._id, localStorage.email)
+			.then(res => {
+				this.getMessages();
+
+
+				//this.setState({ user: res.data.messages_received });
+			})
+			.catch(err => console.log(err));
+	};
+
 	displayMessages(data) {
+
+
+
+
+
 		return data.map((note) => {
+
+
 			return (
 				<Card
 					key={note._id}
@@ -73,15 +93,16 @@ state = {user:[]}
 					<CardText>{note.message}</CardText>
 					<div >
 						<Button style={{ backgroundColor: "#4578C2" }}>Save</Button>
-						<Button raised color="accent" >Toss Back</Button>
+						<Button raised color="accent" onClick={() =>
+							this.throwBack(note)} >Toss Back</Button>
 						<Button raised color="red" >Report</Button>
 
 					</div>
-				</Card>
+				</Card >
 			)
 		})
 	}
-
+	//} /*  console.log(this.state)*/
 
 	render() {
 		return (
