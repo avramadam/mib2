@@ -44,7 +44,7 @@ router.post('/:id/users/:email', function (req, res) {
         getRandomUser(function (err, randomUser) {
           users.findOne({ email: randomUser }, function (err, user) {
 
-            user.update({ $push: { messages_received: message._id } }, { new: true }, function (err) {
+            user.update({ $push: { messages_received: req.params.id } }, { new: true }, function (err) {
               if (err) {
                 console.log(err);
               }
@@ -71,7 +71,7 @@ router.post('/:id/users/:email', function (req, res) {
                 // Tada! random user
                 console.log("1st" + result);
 
-                if (result.email === email || result.messages_received.includes(message._id) || result.messages_authored.includes(message._id)) {
+                if (result.email === email || result.messages_received.includes(req.params.id) || result.messages_authored.includes(req.params.id)) {
                   getRandomUser(callback);
                 } else {
 
@@ -91,7 +91,7 @@ router.post('/:id/users/:email', function (req, res) {
       console.log('briny');
       console.log(message._id);
 
-      sendbottle.updateOne({ _id: message._id }, { $set: { briny_deeps: true } }, function () {
+      sendbottle.updateOne({ _id: req.params.id }, { $set: { briny_deeps: true } }, function () {
         res.send('success');
       });
 

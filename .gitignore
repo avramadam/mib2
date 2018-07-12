@@ -74,5 +74,5 @@ typings/
 # Serverless directories
 .serverless
 
-.ds_store
+**/.DS_store
 client/dist

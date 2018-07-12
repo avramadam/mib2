@@ -35,12 +35,14 @@ const messageRoutes = require('./server/routes/sendbottle');
 const receivedRoutes = require('./server/routes/messages_received');
 const throwbackroute = require('./server/routes/throwback.js');
 const keepmessage = require('./server/routes/keep_it.js');
+const reportIt = require('./server/routes/report_it.js');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/sendbottle', messageRoutes);
 app.use('/received', receivedRoutes);
 app.use('/throwback', throwbackroute);
 app.use('/keep_it', keepmessage);
+app.use('/reportit', reportIt);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/server/static/index.html'));
