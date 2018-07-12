@@ -84,16 +84,20 @@ class New extends React.Component {
 					key={note._id}
 					className="container"
 					style={{
-						backgroundColor: "rgba(255, 255, 255, .8)",
+						backgroundColor: "#ffaf87",
+						opacity: ".8",
 						border: "none",
 						boxShadow: "none",
-						paddingBottom: "2rem"
+						paddingBottom: "1em",
+						marginBottom: "2rem"
 					}}>
 					<CardTitle
 						style={
 							{
+
 								fontWeight: "bold",
-								backgroundColor: "rgba(0, 0, 0, .8)",
+								backgroundColor: "#54838a",
+								opacity: ".9",
 								color: "#ffffff"
 							}
 						}
@@ -119,18 +123,9 @@ class New extends React.Component {
 			<div>
 				<Hero backgroundImage="./images/miab.jpeg">
 
-					<Card className="container" >
 
+					<h4>Here Is What Washed Up On Your Shore</h4>
 
-						<CardTitle style={{
-							backgroundColor: "rgba(22, 86, 179, .8)",
-							border: "none",
-							boxShadow: "none",
-							paddingBottom: "2rem"
-						}}
-							title="These are your new bottles."
-						/>
-					</Card>
 					{this.displayMessages(this.state.user)}
 				</Hero>
 
