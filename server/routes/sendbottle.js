@@ -6,17 +6,6 @@ const router = new express.Router();
 const store = require('store');
 const messageController = require("../controllers/message-controller");
 
-/*router.get('/messages', (req, res) => {
-  console.log("In the get route");
-  //Comment.find((err, comments) => {
-  //  if (err) return res.json({ success: false, error: err });
-  //  return res.json({ success: true, data: comments });
-  //});
-});*/
-
-//router.get('/messages', function (req, res) {
-//  res.send('My funky form');
-//});
 // Get saved messages
 router.get("/getmessages/:email", messageController.find);
 
