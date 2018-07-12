@@ -19,6 +19,8 @@ const messageController = require("../controllers/message-controller");
 //});
 // Get saved messages
 router.get("/getmessages/:email", messageController.find);
+
+router.get("/getkeptmessages/:email", messageController.findKept);
 // delete saved messages
 router.delete("/getmessages/:id", messageController.delete);
 
@@ -35,10 +37,19 @@ router.post('/messages', function (req, res) {
 
 
     }).then(function (message) {
+
+      console.log(email + " message authored takes this");
+
       // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
       // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
       // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      users.findOneAndUpdate({ email: email }, { $push: { messages_authored: message._id } }, { new: true });
+      users.findOneAndUpdate({ email: email }, { $push: { messages_authored: message._id } }, { new: true }, function (err) {
+        if (err) {
+          console.log(err);
+        }
+
+        res.send();
+      });
 
 
       getRandomUser(function (err, randomUser) {
