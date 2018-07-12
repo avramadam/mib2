@@ -26,6 +26,16 @@ const api = {
 
     return axios.post(`/throwback/${id}/users/${email}`);
 
+  },
+
+  reportIt: function (id, email) {
+    console.log(id);
+    console.log(email);
+
+
+
+    return axios.post(`/reportit/${id}/users/${email}`);
+
   }
 
 };
