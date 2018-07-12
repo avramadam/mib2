@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
-
+import { withStyles } from 'material-ui/styles';
+import API from "../utils/api";
+/* 
 const data = [
 
 
@@ -28,8 +30,22 @@ const data = [
 	}
 
 ]
-
+ */
 class Saved extends React.Component {
+
+	state = { user: [] }
+
+	componentDidMount() {
+		this.getMessages();
+	}
+
+	// Method for getting (all messages) from the db
+	getMessages = () => {
+		API.getKeptMessages(localStorage.email)
+			.then((res) => {
+				this.setState({ user: res.data.messages_kept });
+			});
+	}
 
 	displayMessages(data) {
 		return data.map((note) => {
@@ -85,7 +101,7 @@ class Saved extends React.Component {
 							title="Saved Bottles Go Here"
 						/>
 					</Card>
-					{this.displayMessages(data)}
+					{this.displayMessages(this.state.user)}
 				</Hero>
 
 			</div>

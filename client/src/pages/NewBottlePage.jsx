@@ -63,13 +63,26 @@ class New extends React.Component {
 	};
 
 	reportIt = (note) => {
-		console.log(note);
-		console.log("whoah");
-		console.log(note._id);
+
 
 
 
 		API.reportIt(note._id, localStorage.email)
+			.then(res => {
+				this.getMessages();
+
+
+				//this.setState({ user: res.data.messages_received });
+			})
+			.catch(err => console.log(err));
+	};
+
+	keepIt = (note) => {
+
+
+
+
+		API.keepIt(note._id, localStorage.email)
 			.then(res => {
 				this.getMessages();
 
@@ -109,7 +122,8 @@ class New extends React.Component {
 					>{note.title}</CardTitle>
 					<CardText>{note.message}</CardText>
 					<div >
-						<Button style={{ backgroundColor: "#4578C2" }}>Save</Button>
+						<Button style={{ backgroundColor: "#4578C2" }} onClick={() =>
+							this.keepIt(note)}>Save</Button>
 						<Button raised color="accent" onClick={() =>
 							this.throwBack(note)} >Toss Back</Button>
 						<Button raised color="red" onClick={() =>

@@ -7,6 +7,10 @@ const api = {
     return axios.get("/sendbottle/getmessages/" + email);
   },
 
+  getKeptMessages: function (email) {
+    return axios.get("/sendbottle/getkeptmessages/" + email);
+  },
+
   // Deletes a message from the db
   deleteMessage: function (id, email) {
     /*const params = {
@@ -25,6 +29,12 @@ const api = {
 
 
     return axios.post(`/throwback/${id}/users/${email}`);
+
+  },
+  keepIt: function (id, email) {
+
+
+    return axios.post(`/keep_it/${id}/users/${email}`);
 
   },
 
