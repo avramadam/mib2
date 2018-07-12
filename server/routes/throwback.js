@@ -6,17 +6,38 @@ const router = require("express").Router();
 const store = require('store');
 
 
-router.post('/', function (req, res) {
-  let message = req.body.message;
+router.post('/:id/users/:email', function (req, res) {
+  let id = req.params.id;
+  console.log(req.params.email + " thing");
 
-  sendbottle.findById(message._id, function (err, message) {
+  /* users.update({ email: req.params.email }, { $pull: { messages_received: { $in: [id] } } }) */
+
+  /* users.findOneAndUpdate({ email: req.params.email }, {
+    $pull: { messages_received: { _id: req.params.id } }
+  }, function (err, user) {
+    console.log(user.messages_received); */
+
+
+
+  users.update({ email: req.params.email }, {
+    $pull: { messages_received: req.params.id }
+  }, function (err, req) {
+    console.log(req);
+
+    if (err) {
+      console.log(err);
+
+    }
+    res.send("success")
+  });
+  sendbottle.findById(req.params.id, function (err, message) {
 
     if (message.seen_count < 3) {
 
       console.log('else dunt work');
 
-      sendbottle.updateOne({ _id: message._id }, { seen_count: message.seen_count += 1 }, function (err) {
-        let email = req.body.email.replace("%40", "@");
+      sendbottle.updateOne({ _id: req.params.id }, { seen_count: message.seen_count += 1 }, function (err) {
+        let email = req.params.email.replace("%40", "@");
 
 
 
@@ -27,8 +48,8 @@ router.post('/', function (req, res) {
               if (err) {
                 console.log(err);
               }
-
               res.send("success");
+
             })
           });
         })
@@ -56,7 +77,7 @@ router.post('/', function (req, res) {
 
                   console.log(result.email + " " + email);
                   //return result.email;
-                  callback(null, result.email);
+
                 }
 
               })
@@ -76,7 +97,19 @@ router.post('/', function (req, res) {
 
     }
   })
+
+
+  /* user.deleteOne({}, { $pull: { messages_received: message._id } }, function (err) {
+    if (err) {
+      console.log(err);
+    }
+
+    res.send("success");
+  }) */
+
+
 });
+
 
 
 
