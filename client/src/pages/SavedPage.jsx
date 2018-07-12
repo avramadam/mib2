@@ -69,8 +69,6 @@ class Saved extends React.Component {
 					>{note.title}</CardTitle>
 					<CardText style={
 						{
-
-
 						}
 					}>{note.message}</CardText>
 				</Card>
