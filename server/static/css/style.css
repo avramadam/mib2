@@ -3,14 +3,25 @@ body {
   font-size: 16px;
   background: url(../images/miab.jpeg) ;
   height: 100%;
-
-
-  /* background-size: 100%; */
-
-
-
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+div.container div div div b{
+  font-size: 30px;
+}
+
+div.container div.row div.col-sm-6 div div div b{
+  font-size: 30px;
+}
+
+div.container div.row div.col-sm-6 div div div{
+  margin-top: 1em;
+  padding-bottom: 5px;
+
+}
+div.container div.row div.col-sm-6{
+position: center;
 }
 
 a {
@@ -21,7 +32,7 @@ a {
 }
 
 a:hover {
-  color: #6ca8b0;
+  color: blue !important;
 }
 
 .text-center {
@@ -62,13 +73,26 @@ a:hover {
 }
 
 .card-heading {
-  padding: 16px;
+  padding: 24px;
+}
+
+.CardTitle{
+  font-size: 30 px;
 }
 
 .field-line, .button-line {
   padding: 16px;
-  color:#4c5f74;
+  color:black;
   opacity: none;
+}
+.field-line div div hr{
+  bottom:0 !important;
+ }
+ .field-line div label{
+   color: #4c5f74 !important;
+ }
+ .field-line div label div hr{
+  color: #4c5f74 !important;
 }
 
 .error-message {
@@ -117,3 +141,10 @@ a:hover {
   bottom:0 !important;
 }
 
+.hero h4 {
+  font-size: 60px;
+  padding-top: 30px;
+  margin-top: 0;
+  padding-bottom: .5em;
+  color:#4c5f74;
+}

@@ -3,6 +3,7 @@ import { Button, Row, Col, Container } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 var store = require('store')
 
 import { Card, CardTitle, CardText } from 'material-ui/Card';
@@ -11,16 +12,15 @@ const Dashboard = ({ secretData, user }) => (
   <div>
     <Hero backgroundImage="./images/miab.jpeg" >
       <Card className="container" style={{
-        backgroundColor: "rgba(255, 255, 255, .8)",
+        backgroundColor: "#ffaf87",
+        opacity: ".7",
         border: "none",
         boxShadow: "none",
         marginBottom: "5rem",
         paddingBottom: "1rem",
       }}>
         <div>
-          <CardTitle
-            title="Dashboard"
-          />
+          <CardTitle><b>Dashboard</b></CardTitle>
           {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardText>}
 
         </div>
@@ -29,44 +29,73 @@ const Dashboard = ({ secretData, user }) => (
         <Row>
           <Col sm="6">
             <Card style={{
-              backgroundColor: "rgba(255, 255, 255, .8)",
+              backgroundColor: "#ffaf87",
+              opacity: ".8",
               border: "none",
               boxShadow: "none",
               paddingBottom: "2rem"
             }}>
-              <CardTitle>Send a Bottle</CardTitle>
-              <CardText>Cast your own bottle into the wild blue.</CardText>
-              <Link to="/Messages">
-                <Button>Send Bottle</Button>
-              </Link>
-            </Card>
-          </Col>
-          <Col sm="6">
-            <Card style={{
-              backgroundColor: "rgba(255, 255, 255, .8)",
-              border: "none",
-              boxShadow: "none",
-              paddingBottom: "2rem"
-            }}>
-              <CardTitle>View Saved Bottles</CardTitle>
+              <CardTitle><b>View Saved Bottles</b></CardTitle>
               <CardText>View all the bottles you've scoured from the sand.</CardText>
               <Link to="/SavedMessages">
-                <Button>View Saved</Button>
+                <Button
+                  variant="contained"
+                  color="#4c5f74"
+                  disableRipple
+                  opacity="none"
+                >
+                  View Saved
+                  </Button>
               </Link>
             </Card>
           </Col>
           <Col sm="6">
             <Card style={{
-              backgroundColor: "rgba(255, 255, 255, .8)",
+              backgroundColor: "#ffaf87",
+              opacity: ".9",
               border: "30px",
               boxShadow: "none",
               paddingBottom: "2rem"
             }}>
-              <CardTitle>View New Bottles</CardTitle>
-              <CardText>View new bottles</CardText>
+              <CardTitle><b>View New Bottles</b></CardTitle>
+              <CardText>
+                View new bottles
+              </CardText>
               <Link to="/NewBottles">
-                <Button>View New Bottles</Button>
+                <Button
+                  variant="contained"
+                  color="Dark Grey"
+                  disableRipple
+                  opacity="0.8"
+                >
+                  View New Bottles
+                </Button>
                 {/* //test */}
+              </Link>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm="6">
+            <Card style={{
+              color: "black",
+              backgroundColor: "#ffaf87",
+              opacity: ".8",
+              border: "none",
+              boxShadow: "none",
+              paddingBottom: "2rem"
+            }}>
+              <CardTitle><b>Send a Bottle</b></CardTitle>
+              <CardText>Cast your own bottle into the wild blue.</CardText>
+              <Link to="/Messages">
+                <Button
+                  variant="contained"
+                  color="Dark Grey"
+                  disableRipple
+                  opacity="0.9"
+                >
+                  Send Bottle
+      </Button>
               </Link>
             </Card>
           </Col>
