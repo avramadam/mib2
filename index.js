@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
 const path = require('path');
-
+const dbURI = process.env.MONGODB_URI || config.dbUri;
 // connect to the database and load models
-require('./server/models').connect(config.dbUri);
+require('./server/models').connect(dbURI);
 //require('./server/passport/popdb.js');
 
 const app = express();

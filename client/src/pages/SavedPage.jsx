@@ -64,13 +64,11 @@ class Saved extends React.Component {
 	}
 	render() {
 		return (
-			<div style={{
-				// backgroundImage="./images/miab.jpeg"
-			}}>
-				<Hero backgroundImage="./images/miab.jpeg" height="100%">
+			<div>
+				<Hero>
 
 					<Card className="container" style={{
-						// fontFamily: 'Markazi Text'
+						fontFamily: "'Markazi Text', serif"
 
 					}} >
 

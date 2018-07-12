@@ -11,6 +11,7 @@ class LogoutFunction extends React.Component {
     // deauthenticate user
     Auth.deauthenticateUser();
     store.remove('user')
+    localStorage.clear
     this.props.toggleAuthenticateStatus();
     // change the current URL to / after logout
   }
