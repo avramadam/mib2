@@ -32,9 +32,17 @@ const SendBottleForm = ({
   return (
     <div>
       <Hero >
-        <Card className="container" style={{ width: 500 }}>
+        <h4>Cast Out Your Own Bottle</h4>
+        <Card className="container" style={{
+
+          width: 500,
+          backgroundColor: "#ffaf87",
+          opacity: ".8",
+          paddingTop: "1em"
+
+
+        }}>
           <form action="/" onSubmit={onSubmit}>
-            <h3 className="card-heading">Send</h3>
 
             {errors.summary && <p className="error-message">{errors.summary}</p>}
 

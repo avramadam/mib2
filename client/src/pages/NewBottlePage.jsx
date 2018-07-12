@@ -124,7 +124,7 @@ class New extends React.Component {
 				<Hero backgroundImage="./images/miab.jpeg">
 
 
-					<h4>Here is what washed up on your shore</h4>
+					<h4>Here Is What Washed Up On Your Shore</h4>
 
 					{this.displayMessages(this.state.user)}
 				</Hero>
