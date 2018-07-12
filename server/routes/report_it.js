@@ -6,10 +6,23 @@ const router = require("express").Router();
 const store = require('store');
 
 
-router.post('/', function (req, res) {
+router.post('/:id/users/:email', function (req, res) {
   let message = req.body.message;
+  console.log('route working');
 
-  sendbottle.findByIdAndUpdate(message._id, { $set: { reported: true } }, function (err) {
+  users.update({ email: req.params.email }, {
+    $pull: { messages_received: req.params.id }
+  }, function (err, req) {
+    console.log(req);
+
+    if (err) {
+      console.log(err);
+
+    }
+    res.send("success")
+  });
+
+  sendbottle.findByIdAndUpdate(req.params.id, { $set: { reported: true } }, function (err) {
     if (err) {
       console.log(err);
     }
@@ -17,13 +30,13 @@ router.post('/', function (req, res) {
     res.send();
   });
 
-  users.findOneAndUpdate({ email: req.body.email }, { $push: { thrown_back: message._id } }, { new: true }, function (err) {
+  /* users.findOneAndUpdate({ email: req.body.email }, { $push: { thrown_back: message._id } }, { new: true }, function (err) {
     if (err) {
       console.log(err);
     }
 
     res.send();
-  });
+  }); */
 
 });
 
