@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
-
+import { withStyles } from 'material-ui/styles';
+import API from "../utils/api";
+/* 
 const data = [
 
 
@@ -28,8 +30,22 @@ const data = [
 	}
 
 ]
-
+ */
 class Saved extends React.Component {
+
+	state = { user: [] }
+
+	componentDidMount() {
+		this.getMessages();
+	}
+
+	// Method for getting (all messages) from the db
+	getMessages = () => {
+		API.getKeptMessages(localStorage.email)
+			.then((res) => {
+				this.setState({ user: res.data.messages_kept });
+			});
+	}
 
 	displayMessages(data) {
 		return data.map((note) => {
@@ -57,6 +73,8 @@ class Saved extends React.Component {
 					>{note.title}</CardTitle>
 					<CardText style={
 						{
+
+
 						}
 					}>{note.message}</CardText>
 				</Card>
@@ -70,10 +88,25 @@ class Saved extends React.Component {
 					<h4>Welcome To Your Collection</h4>
 
 
-					{this.displayMessages(data)}
+					}} >
+
+
+						<CardTitle style={{
+						backgroundColor: "rgba(22, 86, 179, .8)",
+						border: "none",
+						boxShadow: "none",
+						paddingBottom: "2rem",
+						fontFamily: 'Markazi Text',
+						fontSize: 50
+
+					}}
+						title="Saved Bottles Go Here"
+					/>
+					</Card>
+				{this.displayMessages(this.state.user)}
 				</Hero>
 
-			</div>
+			</div >
 		)
 	}
 }
