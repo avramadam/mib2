@@ -75,4 +75,3 @@ typings/
 .serverless
 
 **/.DS_store
-client/dist
