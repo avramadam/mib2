@@ -1,9 +1,14 @@
 import React from 'react';
+import { Button, Row, Col } from 'reactstrap'
+//import { Button } from "reactstrap";
+//import Row from "../components/Row";
+//import Col from "../components/Col";
+import { Link } from 'react-router-dom';
 import Hero from "../components/Hero";
+import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
-import API from "../utils/api";
 
-/*const data = [
+const data = [
 
 
 	{
@@ -22,24 +27,10 @@ import API from "../utils/api";
 		message: "Vivamus in lacinia dui, sed sollicitudin lectus. Maecenas nec ligula quis ex ullamcorper volutpat. Nunc id felis sit amet ex hendrerit congue sed ac erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus rutrum lacus vel urna rhoncus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam dignissim hendrerit augue sit amet ornare. Proin sit amet neque bibendum, euismod dui dignissim, scelerisque risus. Morbi mauris orci, luctus nec lacus id, molestie fringilla justo. Aenean dolor arcu, bibendum vitae justo ac, convallis blandit enim. Fusce id urna tempus, tristique diam nec, congue nisl. Morbi pretium nulla dui, et bibendum tortor varius in. Ut vehicula aliquet porta. Phasellus fringilla nisi vel leo aliquet, ac vulputate nibh dapibus. Curabitur ultrices neque id felis auctor, consequat feugiat augue suscipit. Nam purus nisi, porta ut placerat quis, lobortis ac augue."
 	}
 
-]*/
+]
 
 class Saved extends React.Component {
 
-	state = {user:[]}
-
-	componentDidMount() {
-		this.getMessages();
-	}
-	
-	// Method for getting (all messages) from the db
-	getMessages = () => {
-		API.getKeptMessages(localStorage.email)
-		  .then((res) => {
-			this.setState({ user: res.data.messages_kept });
-			});
-	}
-	
 	displayMessages(data) {
 		return data.map((note) => {
 			return (
@@ -47,16 +38,19 @@ class Saved extends React.Component {
 					key={note._id}
 					className="container"
 					style={{
-						backgroundColor: "rgba(255, 255, 255, .8)",
+						backgroundColor: "#ffaf87",
+						opacity: ".8",
 						border: "none",
 						boxShadow: "none",
-						paddingBottom: "2rem"
+						paddingBottom: "1em",
+						marginBottom: "2rem"
 					}}>
 					<CardTitle
 						style={
 							{
 								fontWeight: "bold",
-								backgroundColor: "rgba(0, 0, 0, .8)",
+								backgroundColor: "#54838a",
+								opacity: ".9",
 								color: "#ffffff"
 							}
 						}
@@ -73,26 +67,10 @@ class Saved extends React.Component {
 		return (
 			<div>
 				<Hero>
-
-					<Card className="container" style={{
-						fontFamily: "'Markazi Text', serif"
-
-					}} >
+					<h4>Welcome To Your Collection</h4>
 
 
-						<CardTitle style={{
-							backgroundColor: "rgba(22, 86, 179, .8)",
-							border: "none",
-							boxShadow: "none",
-							paddingBottom: "2rem",
-							fontFamily: 'Markazi Text',
-							fontSize: 50
-
-						}}
-							title="Saved Bottles Go Here"
-						/>
-					</Card>
-					{this.displayMessages(this.state.user)}
+					{this.displayMessages(data)}
 				</Hero>
 
 			</div>
